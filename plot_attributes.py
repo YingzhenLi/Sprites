@@ -29,7 +29,7 @@ def cut_image(attribute, i):
     a.convert('RGB')
     if attribute == 'body':
         color = a.getpixel((32, 32))
-        print color
+        print (color)
         a = Image.new('RGBA', a.size, color)
     
     os.remove('%s.png' % classname)
@@ -40,7 +40,7 @@ if __name__ == '__main__':
     attributes = ['body', 'bottomwear', 'topwear', 'hair']
     for attr in attributes:
         images = []
-        for i in xrange(n_class):
+        for i in range(n_class):
             images.append(cut_image(attr, i))
         
         widths, heights = zip(*(i.size for i in images))

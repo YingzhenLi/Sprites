@@ -11,10 +11,10 @@ def sprites_act(path, seed=0, return_labels = False):
     if return_labels:
         A_train = []; A_test = []
         D_train = []; D_test = []
-    for act in xrange(len(actions)):
-        for i in xrange(len(directions)):
+    for act in range(len(actions)):
+        for i in range(len(directions)):
             label = 3 * act + i
-            print actions[act], directions[i], act, i, label
+            print( actions[act], directions[i], act, i, label)
             x = np.load(path + '%s_%s_frames_train.npy' % (actions[act], directions[i]))
             X_train.append(x)
             y = np.load(path + '%s_%s_frames_test.npy' % (actions[act], directions[i]))
@@ -47,10 +47,10 @@ def sprites_act(path, seed=0, return_labels = False):
         D_test = np.concatenate(D_test, axis=0)
         A_test = A_test[ind]
         D_test = D_test[ind]
-        print A_test.shape, D_test.shape, X_test.shape, 'shapes'
-    print X_train.shape, X_test.min(), X_test.max()
+        print( A_test.shape, D_test.shape, X_test.shape, 'shapes')
+    print( X_train.shape, X_test.min(), X_test.max())
     end = time.time()
-    print 'data loaded in %.2f seconds...' % (end - start)
+    print( 'data loaded in %.2f seconds...' % (end - start))
 
     if return_labels:
         return X_train, X_test, A_train, A_test, D_train, D_test
