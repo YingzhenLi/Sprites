@@ -9,25 +9,25 @@ n_directions = 3
 
 def load_seq(path, labels, action, direction):
     num = ''
-    for i in xrange(len(labels)):
+    for i in range(len(labels)):
         num = num + str(labels[i])
 
     # return sequence and label
     seq = []
-    for frame in xrange(n_frames):
+    for frame in range(n_frames):
         fr = str(frame)
         filename = action + '/' + direction + '_' + num + '_' + fr + '.png'
         im = ndimage.imread(path + filename)
         seq.append(np.asarray(im, dtype='f'))
 
     attr_labels = np.zeros([len(labels), n_class])
-    for i in xrange(len(labels)):
+    for i in range(len(labels)):
         attr_labels[i, labels[i]] = 1
     di_labels = np.zeros(n_directions)
     di_labels[num_direction[direction]] = 1
     list_attr = []
     list_di = []
-    for i in xrange(n_frames):
+    for i in range(n_frames):
         list_attr.append(attr_labels)
         list_di.append(di_labels)
 
@@ -79,22 +79,22 @@ def save_npy():
             im_seq_test = im_seq[N_train:]
             np.save(save_path + im_npy_file_name + '_train.npy', im_seq_train)
             np.save(save_path + im_npy_file_name + '_test.npy', im_seq_test)
-            print 'saved ' + save_path + im_npy_file_name + '_train.npy'
-            print 'saved ' + save_path + im_npy_file_name + '_test.npy'
+            print( 'saved ' + save_path + im_npy_file_name + '_train.npy')
+            print( 'saved ' + save_path + im_npy_file_name + '_test.npy')
 
             attr_seq_train = attr_seq[:N_train]
             attr_seq_test = attr_seq[N_train:]
             np.save(save_path + attr_npy_file_name + '_train.npy', attr_seq_train)
             np.save(save_path + attr_npy_file_name + '_test.npy', attr_seq_test)
-            print 'saved ' + save_path + attr_npy_file_name + '_train.npy'
-            print 'saved ' + save_path + attr_npy_file_name + '_test.npy'
+            print( 'saved ' + save_path + attr_npy_file_name + '_train.npy')
+            print( 'saved ' + save_path + attr_npy_file_name + '_test.npy')
 
             di_seq_train = di_seq[:N_train]
             di_seq_test = di_seq[N_train:]
             np.save(save_path + di_npy_file_name + '_train.npy', di_seq_train)
             np.save(save_path + di_npy_file_name + '_train.npy', di_seq_test)
-            print 'saved ' + save_path + di_npy_file_name + '_train.npy'
-            print 'saved ' + save_path + di_npy_file_name + '_test.npy'
+            print( 'saved ' + save_path + di_npy_file_name + '_train.npy')
+            print( 'saved ' + save_path + di_npy_file_name + '_test.npy')
 
 if __name__ == '__main__':
     save_npy()

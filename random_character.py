@@ -22,7 +22,7 @@ def gen_char(body, bottom, top, hair):
 
     # then merge all!
     f = Image.new('RGBA', img_list[0].size, 'black')
-    for i in xrange(len(img_list)):
+    for i in range(len(img_list)):
         f = Image.alpha_composite(f, img_list[i].convert('RGBA'))
 
     # save image
@@ -33,8 +33,8 @@ def gen_char(body, bottom, top, hair):
     # crop to 64 * 64
     width = 64; height = 64
     imgwidth, imgheight = img.size
-    N_width = imgwidth / width
-    N_height = imgheight / height
+    N_width = imgwidth // width
+    N_height = imgheight // height
     path = 'frames/'
     if not os.path.exists(path):
         os.makedirs(path)
@@ -61,8 +61,8 @@ def gen_char(body, bottom, top, hair):
         if not os.path.exists(path+act+'/'):
             os.makedirs(path+act+'/')
 
-    for j in xrange(N_height):
-        for i in xrange(N_width):
+    for j in range(N_height):
+        for i in range(N_width):
             ind = j * N_width + i
 
             # for spellcard
@@ -183,5 +183,5 @@ if __name__ == '__main__':
 
         gen_char(body, bottom, top, hair)
         if (seed+1) % 100 == 0:
-            print 'generate %d/%d sequences' % (seed+1, n_class**4)
+            print( 'generate %d/%d sequences' % (seed+1, n_class**4))
 

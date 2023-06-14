@@ -47,5 +47,5 @@ def plot_gif(x_seq, shape, path, filename):
     anim = FuncAnimation(fig, update, frames=np.arange(T), \
                           interval=1000, blit=True)
     anim.save(path+filename+'.gif', writer='imagemagick')
-    print 'image saved as ' + path+filename+'.gif'
+    print( 'image saved as ' + path+filename+'.gif')
 
